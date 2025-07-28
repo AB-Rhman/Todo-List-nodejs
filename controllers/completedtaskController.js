@@ -7,10 +7,11 @@ module.exports.completedtask = function(req, res){
     .then(function(data){
         User.findOne({email : "ankitvis609@gmail.com"})
         .then(function(user){
-            console.log(`**********user`, user.name);
+            const userName = user ? user.name : 'User';
+            console.log(`**********user`, userName);
         return res.render('completedtask', {
             title: "Dashboard",
-            name: user.name,
+            name: userName,
             dashboard: data
         });
     })

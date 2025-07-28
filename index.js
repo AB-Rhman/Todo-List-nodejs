@@ -1,5 +1,5 @@
 const express = require('express');
-const port = 4000;
+const port = process.env.PORT || 4000;
 const path = require('path');
 
 // require the mongoose file
@@ -22,7 +22,7 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
 // set up the middleware
-app.use(express.urlencoded());
+app.use(express.urlencoded({ extended: true }));
 
 // set up the static files
 app.use(express.static('assets'));
